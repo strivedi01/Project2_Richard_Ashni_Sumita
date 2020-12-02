@@ -1,4 +1,4 @@
-UniqueID,countyFIPS,CountyName,Month_Year,Cases,Month_c,Month,Year,County_FIPS,LaborForce,Employed,Unemployed,UnemploymentRate
+id,countyFIPS,CountyName,Month_Year,Cases,Month_c,Month,Year,County_FIPS,LaborForce,Employed,Unemployed,UnemploymentRate
 Atlantic County_Feb,34001,Atlantic County,20-Feb,0,Feb,2,20,1,121288,113570,7718,6.4
 Atlantic County_Mar,34001,Atlantic County,20-Mar,164,Mar,3,20,1,120344,113532,6812,5.7
 Atlantic County_Apr,34001,Atlantic County,20-Apr,11294,Apr,4,20,1,122476,81068,41408,33.8
