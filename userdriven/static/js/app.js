@@ -7,7 +7,7 @@
 //     // Use d3 to select the panel with id of `#sample-metadata`
 //     var PANEL = d3.select("#sample-metadata");
     
-    // Use `.html("") to clear any existing metadata
+//    // Use `.html("") to clear any existing metadata
 //     PANEL.html("");
 //     // Use `Object.entries` to add each key and value pair to the panel
 //     // Hint: Inside the loop, you will need to use d3 to append new
@@ -23,19 +23,23 @@
 
 function buildCharts(sample) {
   d3.json("samples.json").then((data) => {
+    // console.log(data);
+    // console.log([data]);
+
     var samples = data;
-    // var resultArray = samples.filter(sampleObj => sampleObj.id == samples);
-    // var result = resultArray[0];
+    var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
+    var result = resultArray[0];
     var result = samples[0];
     var otu_ids = result.id;
     var otu_labels = result.County_Month;
-    var sample_values = result.Cases;
+    var sample_values = result.Covid_Cases;
+    console.log(sample_values);
     // Build a Bubble Chart
     var bubbleLayout = {
       title: "Covid Cases Rate Per County",
       margin: { t: 0 },
       hovermode: "closest",
-      xaxis: { title: "CountyName" },
+      xaxis: { title: "County_Month" },
       margin: { t: 30}
     };
     var bubbleData = [
@@ -74,7 +78,7 @@ function init() {
   var selector = d3.select("#selDataset");
   // Use the list of sample names to populate the select options
   d3.json("samples.json").then((data) => {
-    //console.log(data);
+    // console.log(data);
     
     var sampleNames = data.id;
     console.log(sampleNames);
@@ -93,7 +97,7 @@ function init() {
 function optionChanged(newSample) {
   // Fetch new data each time a new sample is selected
   buildCharts(newSample);
-  // buildMetadata(newSample);
+  buildMetadata(newSample);
 }
 // Initialize the dashboard
 init();
