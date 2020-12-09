@@ -36,7 +36,7 @@ d3.csv("joined_df_final.csv"), function(data) {
     .range([ "#440154ff", "#21908dff", "#fde725ff", ""])
 
 
-  // Highlight the specie that is hovered
+  // Highlight the county that is hovered
   var highlight = function(d){
 
     selected_county = d.County_Name
