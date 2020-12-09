@@ -30,16 +30,16 @@ d3.csv("joined_df_final.csv"), function(data) {
   svg.append("g")
     .call(d3.axisLeft(y));
 
-  // Color scale: give me a specie name, I return a color
+  // Color scale: give me a county name, I return a color
   var color = d3.scaleOrdinal()
-    .domain(["setosa", "versicolor", "virginica" ])
-    .range([ "#440154ff", "#21908dff", "#fde725ff"])
+    .domain(["Atlantic County", "Bergen County", "Burlington County", "Camden County", "Cape May County", "Cumberland County", "Essex County", "Gloucester County", "Hudson County", "Hunterdon County", "Mercer County", "Middlesex County", "Monmouth County", "Morris County", "Ocean County", "Passaic County", "Salem County", "Somerset County", "Sussex County", "Union County", "Warren County" ])
+    .range([ "#440154ff", "#21908dff", "#fde725ff", ""])
 
 
   // Highlight the specie that is hovered
   var highlight = function(d){
 
-    selected_specie = d.Species
+    selected_county = d.County_Name
 
     d3.selectAll(".dot")
       .transition()
@@ -47,14 +47,14 @@ d3.csv("joined_df_final.csv"), function(data) {
       .style("fill", "lightgrey")
       .attr("r", 3)
 
-    d3.selectAll("." + selected_specie)
+    d3.selectAll("." + selected_county)
       .transition()
       .duration(200)
-      .style("fill", color(selected_specie))
+      .style("fill", color(selected_county))
       .attr("r", 7)
   }
 
-  // Highlight the specie that is hovered
+  // Highlight the county that is hovered
   var doNotHighlight = function(){
     d3.selectAll(".dot")
       .transition()
@@ -69,11 +69,11 @@ d3.csv("joined_df_final.csv"), function(data) {
     .data(data)
     .enter()
     .append("circle")
-      .attr("class", function (d) { return "dot " + d.Species } )
-      .attr("cx", function (d) { return x(d.Sepal_Length); } )
-      .attr("cy", function (d) { return y(d.Petal_Length); } )
+      .attr("class", function (d) { return "dot " + d.County_Name} )
+      .attr("cx", function (d) { return x(d.Covid_Cases); } )
+      .attr("cy", function (d) { return y(d.Unemployment_Rate); } )
       .attr("r", 5)
-      .style("fill", function (d) { return color(d.Species) } )
+      .style("fill", function (d) { return color(d.County_Name) } )
     .on("mouseover", highlight)
     .on("mouseleave", doNotHighlight )
 
