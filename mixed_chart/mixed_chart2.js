@@ -37,7 +37,7 @@ new Chart(document.getElementById("mixed-chart"), {
     options: {
         title: {
             display: true,
-            text: 'NJ Covid Cases vs. Unemployment Rates for 2020',
+            text: 'NJ Covid Cases vs. Unemployment in 2020',
             fontColor: 'grey',
             fontSize: '19',
             fontStyle: 'bold'
