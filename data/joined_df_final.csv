@@ -1,4 +1,4 @@
-id,County_Month,countyFIPS,County,Month_Year,Covid_Cases,year,month,Month_c,County_FIPS,State FIPS Code,County FIPS Code,County Name,State Abbreviation,Month_Year,Labor Force,Employed,Unemployed,Unemployment Rate (%)
+id,County_Month,countyFIPS,County,Month_Year,Covid_Cases,year,month,Month_c,County_FIPS,State FIPS Code,County FIPS Code,County Name,State Abbreviation,Month_Year,Labor Force,Employed,Unemployed,Unemployment_Rate
 101,Atlantic _Feb,34001,Atlantic ,20-Feb,0,2020,2,Feb,1,34,1,Atlantic County, NJ,Feb,121288,113570,7718,6.4
 102,Atlantic _Mar,34001,Atlantic ,20-Mar,31,2020,3,Mar,1,34,1,Atlantic County, NJ,Mar,120344,113532,6812,5.7
 103,Atlantic _Apr,34001,Atlantic ,20-Apr,964,2020,4,Apr,1,34,1,Atlantic County, NJ,Apr,122476,81068,41408,33.8

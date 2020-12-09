@@ -1,73 +1,80 @@
 // function buildMetadata() {
 //   d3.json("samples.json").then((data) => {
-//     var metadata = data.id;
+//     var metadata = data.County;
 //     // Filter the data for the object with the desired sample number
-//     var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
+//     var resultArray = metadata.filter(sampleObj => sampleObj.County == sample);
 //     var result = resultArray[0];
 //     // Use d3 to select the panel with id of `#sample-metadata`
 //     var PANEL = d3.select("#sample-metadata");
     
-//    // Use `.html("") to clear any existing metadata
-//     PANEL.html("");
-//     // Use `Object.entries` to add each key and value pair to the panel
-//     // Hint: Inside the loop, you will need to use d3 to append new
-//     // tags for each key-value in the metadata.
-//      Object.entries(result).forEach(([key, value]) => {
-//       PANEL.append("h5").text(`${key.toUpperCase()}: ${value}`);
+//   //  // Use `.html("") to clear any existing metadata
+//   //   PANEL.html("");
+//   //   // Use `Object.entries` to add each key and value pair to the panel
+//   //   // Hint: Inside the loop, you will need to use d3 to append new
+//   //   // tags for each key-value in the metadata.
+//   //    Object.entries(result).forEach(([key, value]) => {
+//   //     PANEL.append("h5").text(`${key.toUpperCase()}: ${value}`);
 //     });
-//     // BONUS: Build the Gauge Chart
-//     buildGauge(result.wfreq);
-//   });
-// }
+// //     // BONUS: Build the Gauge Chart
+// //     buildGauge(result.wfreq);
+// //   });
+// // }
 
 
 function buildCharts(sample) {
   d3.json("samples.json").then((data) => {
     // console.log(data);
     // console.log([data]);
-
+    var month_list=[];
+    var covidCases =[];
+    var unemp =[];
     var samples = data;
-    var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
+    var resultArray = samples.filter(sampleObj => sampleObj.County == sample);
     var result = resultArray[0];
-    var result = samples[0];
-    var otu_ids = result.id;
-    var otu_labels = result.County_Month;
-    var sample_values = result.Covid_Cases;
-    console.log(sample_values);
+    for (var i = 0; i < resultArray.length; i++) {
+    
+    month_list.push(resultArray[i].Month_c);
+    covidCases.push(resultArray[i].Covid_Cases);
+    unemp.push(resultArray[i].Unemployment_Rate);
+    }
+    // console.log(resultArray);
+    // console.log(month_list);
+    // console.log(covidCases);
+    // console.log(unemp);
+    
     // Build a Bubble Chart
     var bubbleLayout = {
-      title: "Covid Cases Rate Per County",
+      title: "Unemployment Rate Per County",
       margin: { t: 0 },
       hovermode: "closest",
-      xaxis: { title: "County_Month" },
+      xaxis: { title: "Month" },
       margin: { t: 30}
     };
     var bubbleData = [
       {
-        x: otu_ids,
-        y: sample_values,
-        text: otu_labels,
+        x: month_list,
+        y: unemp,
+        // text: otu_labels,
         mode: "markers",
         marker: {
-          size: sample_values,
-          color: otu_ids,
-          colorscale: "Earth"
+          size: unemp,
+          color: unemp,
+          colorscale: "Reds"
         }
       }
     ];
     Plotly.newPlot("bubble", bubbleData, bubbleLayout);
-    var yticks = otu_labels.slice(0, 10).map(County_Month=> `County_Month ${County_Month}`).reverse();
+    
     var barData = [
       {
-        y: yticks,
-        x: sample_values.slice(0, 10).reverse(),
-        text: otu_labels.slice(0, 10).reverse(),
+        y: month_list,
+        x: covidCases,
         type: "bar",
         orientation: "h",
       }
     ];
     var barLayout = {
-      title: "Top 10 Counties",
+      title: "Number of Covid Cases",
       margin: { t: 30, l: 150 }
     };
     Plotly.newPlot("bar", barData, barLayout);
@@ -78,10 +85,14 @@ function init() {
   var selector = d3.select("#selDataset");
   // Use the list of sample names to populate the select options
   d3.json("samples.json").then((data) => {
-    // console.log(data);
+    console.log(data.County);
+    var sampleNames = [];
     
-    var sampleNames = data.id;
-    console.log(sampleNames);
+    for (var i = 0; i < data.length; i++) {
+      sampleNames.push(data[i].County);
+
+    }
+    
     sampleNames.forEach((sample) => {
       selector
         .append("option")
@@ -92,12 +103,12 @@ function init() {
     var firstSample = sampleNames[0];
     buildCharts(firstSample);
     // buildMetadata(firstSample);
-  });
-}
+   });
+ }
 function optionChanged(newSample) {
   // Fetch new data each time a new sample is selected
   buildCharts(newSample);
-  buildMetadata(newSample);
+  // buildMetadata(newSample);
 }
 // Initialize the dashboard
 init();
