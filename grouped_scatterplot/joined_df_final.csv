@@ -1,0 +1,46 @@
+id,County_Month,Month_Year_x,Covid_Cases,year,month,Month_c,Year,County_FIPS,State FIPS Code,County FIPS Code,County Name,State Abbreviation,Month_Year_y,Labor Force,Employed,Unemployed,Unemployment Rate (%)
+101,Atlantic County_Feb,2/29/2020,0,2020,2,Feb,20,1,34,1,Atlantic County, NJ,Feb,121288,113570,7718,6.4
+102,Atlantic County_Mar,3/31/2020,31,2020,3,Mar,20,1,34,1,Atlantic County, NJ,Mar,120344,113532,6812,5.7
+103,Atlantic County_Apr,4/30/2020,964,2020,4,Apr,20,1,34,1,Atlantic County, NJ,Apr,122476,81068,41408,33.8
+104,Atlantic County_May,5/31/2020,2214,2020,5,May,20,1,34,1,Atlantic County, NJ,May,123110,83049,40061,32.5
+105,Atlantic County_Jun,6/30/2020,2863,2020,6,Jun,20,1,34,1,Atlantic County, NJ,Jun,130190,85419,44771,34.4
+106,Atlantic County_Jul,7/31/2020,3364,2020,7,Jul,20,1,34,1,Atlantic County, NJ,Jul,128751,97204,31547,24.5
+107,Atlantic County_Aug,8/31/2020,3752,2020,8,Aug,20,1,34,1,Atlantic County, NJ,Aug,123426,101307,22119,17.9
+108,Bergen County_Feb,2/29/2020,0,2020,2,Feb,20,3,34,3,Bergen County, NJ,Feb,493995,477262,16733,3.4
+109,Bergen County_Mar,3/31/2020,2909,2020,3,Mar,20,3,34,3,Bergen County, NJ,Mar,494799,480046,14753,3
+110,Bergen County_Apr,4/30/2020,15610,2020,4,Apr,20,3,34,3,Bergen County, NJ,Apr,477518,403413,74105,15.5
+111,Bergen County_May,5/31/2020,18272,2020,5,May,20,3,34,3,Bergen County, NJ,May,485218,412954,72264,14.9
+112,Bergen County_Jun,6/30/2020,19423,2020,6,Jun,20,3,34,3,Bergen County, NJ,Jun,493158,411987,81171,16.5
+113,Bergen County_Jul,7/31/2020,20472,2020,7,Jul,20,3,34,3,Bergen County, NJ,Jul,497668,425789,71879,14.4
+114,Bergen County_Aug,8/31/2020,21600,2020,8,Aug,20,3,34,3,Bergen County, NJ,Aug,492806,437684,55122,11.2
+115,Burlington County_Feb,2/29/2020,0,2020,2,Feb,20,5,34,5,Burlington County, NJ,Feb,235262,226480,8782,3.7
+116,Burlington County_Mar,3/31/2020,202,2020,3,Mar,20,5,34,5,Burlington County, NJ,Mar,236872,229286,7586,3.2
+117,Burlington County_Apr,4/30/2020,2690,2020,4,Apr,20,5,34,5,Burlington County, NJ,Apr,230986,200040,30946,13.4
+118,Burlington County_May,5/31/2020,4627,2020,5,May,20,5,34,5,Burlington County, NJ,May,233012,203531,29481,12.7
+119,Burlington County_Jun,6/30/2020,5168,2020,6,Jun,20,5,34,5,Burlington County, NJ,Jun,234617,201838,32779,14
+120,Burlington County_Jul,7/31/2020,5781,2020,7,Jul,20,5,34,5,Burlington County, NJ,Jul,236554,207565,28989,12.3
+121,Burlington County_Aug,8/31/2020,6395,2020,8,Aug,20,5,34,5,Burlington County, NJ,Aug,235923,214027,21896,9.3
+122,Camden County_Feb,2/29/2020,0,2020,2,Feb,20,7,34,7,Camden County, NJ,Feb,258589,246814,11775,4.6
+123,Camden County_Mar,3/31/2020,228,2020,3,Mar,20,7,34,7,Camden County, NJ,Mar,260261,249933,10328,4
+124,Camden County_Apr,4/30/2020,3519,2020,4,Apr,20,7,34,7,Camden County, NJ,Apr,259701,217661,42040,16.2
+125,Camden County_May,5/31/2020,6510,2020,5,May,20,7,34,7,Camden County, NJ,May,260938,221249,39689,15.2
+126,Camden County_Jun,6/30/2020,7317,2020,6,Jun,20,7,34,7,Camden County, NJ,Jun,263563,219741,43822,16.6
+127,Camden County_Jul,7/31/2020,8301,2020,7,Jul,20,7,34,7,Camden County, NJ,Jul,264660,226188,38472,14.5
+128,Camden County_Aug,8/31/2020,9157,2020,8,Aug,20,7,34,7,Camden County, NJ,Aug,262315,232788,29527,11.3
+129,Cape May County_Feb,2/29/2020,0,2020,2,Feb,20,9,34,9,Cape May County, NJ,Feb,41867,36790,5077,12.1
+130,Cape May County_Mar,3/31/2020,12,2020,3,Mar,20,9,34,9,Cape May County, NJ,Mar,41426,36903,4523,10.9
+131,Cape May County_Apr,4/30/2020,323,2020,4,Apr,20,9,34,9,Cape May County, NJ,Apr,42045,30715,11330,26.9
+132,Cape May County_May,5/31/2020,617,2020,5,May,20,9,34,9,Cape May County, NJ,May,43185,33438,9747,22.6
+133,Cape May County_Jun,6/30/2020,712,2020,6,Jun,20,9,34,9,Cape May County, NJ,Jun,46891,37438,9453,20.2
+134,Cape May County_Jul,7/31/2020,806,2020,7,Jul,20,9,34,9,Cape May County, NJ,Jul,47744,40454,7290,15.3
+135,Cape May County_Aug,8/31/2020,905,2020,8,Aug,20,9,34,9,Cape May County, NJ,Aug,47778,42404,5374,11.2
+136,Cumberland County_Feb,2/29/2020,0,2020,2,Feb,20,11,34,11,Cumberland County, NJ,Feb,66290,61756,4534,6.8
+137,Cumberland County_Mar,3/31/2020,18,2020,3,Mar,20,11,34,11,Cumberland County, NJ,Mar,66372,62405,3967,6
+138,Cumberland County_Apr,4/30/2020,723,2020,4,Apr,20,11,34,11,Cumberland County, NJ,Apr,67714,56567,11147,16.5
+139,Cumberland County_May,5/31/2020,2298,2020,5,May,20,11,34,11,Cumberland County, NJ,May,67865,57612,10253,15.1
+140,Cumberland County_Jun,6/30/2020,2963,2020,6,Jun,20,11,34,11,Cumberland County, NJ,Jun,67884,56555,11329,16.7
+141,Cumberland County_Jul,7/31/2020,3215,2020,7,Jul,20,11,34,11,Cumberland County, NJ,Jul,67136,57031,10105,15.1
+142,Cumberland County_Aug,8/31/2020,3573,2020,8,Aug,20,11,34,11,Cumberland County, NJ,Aug,67481,59691,7790,11.5
+143,Essex County_Feb,2/29/2020,0,2020,2,Feb,20,13,34,13,Essex County, NJ,Feb,375825,357005,18820,5
+144,Essex County_Mar,3/31/2020,1900,2020,3,Mar,20,13,34,13,Essex County, NJ,Mar,373831,356621,17210,4.6
+145,Essex County_Apr,4/30/2020,13682,2020,4,Apr,20,13,34,13,Essex County, NJ,Apr,366044,304445,61599,16.8

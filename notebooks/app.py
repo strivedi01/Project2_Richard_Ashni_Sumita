@@ -10,15 +10,16 @@ from flask import Flask, jsonify
 #################################################
 # Database Setup
 #################################################
-#engine = create_engine("sqlite:///titanic.sqlite")
-engine = create_engine("my_db.sqlite")
+
+engine = create_engine("sqlite:///my_db.sqlite")
 # reflect an existing database into a new model
 Base = automap_base()
 # reflect the tables
 Base.prepare(engine, reflect=True)
 Base.classes.keys()
 # Save reference to the table
-Covid = Base.classes.my_db.sqlite
+Covid = Base.classes.covid_unemployment_data
+
 
 #################################################
 # Flask Setup
@@ -35,8 +36,9 @@ def welcome():
     """List all available api routes."""
     return (
         f"Available Routes:<br/>"
-        f"/api/v1.0/CountyName<br/>"
-        f"/api/v1.0/id"
+        f"/api/v1.0/County_Month<br/>"
+        f"/api/v1.0/Unemployed<br/>"
+        f"/api/v1.0/Covid_Cases<br/>"
     )
 
 
@@ -62,9 +64,9 @@ def counties():
     # Create our session (link) from Python to the DB
     session = Session(engine)
 
-    """Return a list of passenger data including the name, age, and sex of each passenger"""
-    # Query all passengers
-    results = session.query(Covid.Cases, Covid.Unemployed, Covid.UnemploymentRate).all()
+    """Return a list of counties including the Covid_Cases, Unemployed, UnemploymentRate"""
+    # Query all counties
+    results = session.query(Covid.Covid_Cases, Covid.Unemployed, Covid.UnemploymentRate).all()
 
     session.close()
 
@@ -72,9 +74,9 @@ def counties():
     all_counties = []
     for Cases, Unemployed, UnemploymentRate in results:
         county_dict = {}
-        county_dict["Cases"] = Cases
+        county_dict["Covid_Cases"] = Cases
         county_dict["Unemployed"] = Unemployed
-        county_dict["sUnemploymentRate"] = UnemploymentRate
+        county_dict["UnemploymentRate"] = UnemploymentRate
         all_counties.append(county_dict)
 
     return jsonify(all_counties)
