@@ -1,85 +1,85 @@
-#importnecessarylibraries
-	#from models import create_classes
-	
-import os
-from sqlalchemy import create_engine
-from sqlalchemy.orm import Session
+import numpy as np
+
+import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
-from flask import (
-	Flask,
-	render_template,
-	jsonify,
-	request,
-	redirect)
-	
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine, func
 
-	#################################################
-	# Flask Setup
-	#################################################
-app = Flask(__name__)
-	
+from flask import Flask, jsonify
+
 
 #################################################
-	# Database Setup
+# Database Setup
 #################################################
-from flask_sqlalchemy import SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI', '') or "postgresql://postgres:abc123abc@localhost:5432/covid_data"
-
-# Remove tracking modifications
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False	
-
-db = SQLAlchemy(app)	
-
-engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'])	
+engine = create_engine("sqlite:///covid_dbase.sqlite")
 
 # reflect an existing database into a new model
 Base = automap_base()
 # reflect the tables
 Base.prepare(engine, reflect=True)
+
 # Save reference to the table
-covidj = Base.classes.covid_data
-	
+Covid = Base.classes.County
 
 #################################################
-# Endpoints Setup
+# Flask Setup
 #################################################
-# create route that renders index.html template
+app = Flask(__name__)
+
+
+#################################################
+# Flask Routes
+#################################################
+
 @app.route("/")
-def home():
-	return render_template("index.html")
-	
+def welcome():
+    """List all available api routes."""
+    return (
+        f"Available Routes:<br/>"
+        f"/api/v1.0/County<br/>"
+        f"/api/v1.0/Covid_Cases"
+    )
 
-# create endpoint that shares data in json format
-@app.route("/api/covidj")
-def covidj():
-	# Query data from Covid table in db
-	results = db.session.query(covidj.id, covidj.County_Month, covidj.countyFIPS, covidj.County,
-	                            covidj.Covid_Cases, covidj.year, covidj.month, covidj.Month_c, covidj.County_FIPS, 
-                                covidj.Month_Year,  covidj.Employed, covidj.Unemployed, covidj.Unemployment_Rate).all()
-	    
-	# put data into dictionary format that can be jsonified
-	covid_data = []
-	for result in results:
-	    covid_data.append({
-	        "id":result[1],
-	        "County_Month":result[2],
-	        "countyFIPS":result[3],
-	        "County":result[4],                
-	        "Covid_Cases":result[6],
-	        "year":result[7],
-	        "month":result[8],
-	        "Month_c":result[9],
-            "County_FIPS":result[10],
-            "Month_Year":result[16],
-            "Employed":result[18],
-            "Unemployed":result[19],
-            "Unemploment_Rate":result[20]})
-	    
-	    # display jsonified data on the dom
-	return jsonify(covid_data)
-	    
-	
 
-if __name__ == "__main__":
-	app.run()
+@app.route("/api/v1.0/County")
+def names():
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
 
+    """Return a list of all county names"""
+    # Query all passengers
+    results = session.query(Covid.County).all()
+
+    session.close()
+
+    # Convert list of tuples into normal list
+    all_names = list(np.ravel(results))
+
+    return jsonify(all_names)
+
+
+@app.route("/api/v1.0/Covid_Cases")
+def passengers():
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
+
+    """Return a list of passenger data including the name, age, and sex of each passenger"""
+    # Query all passengers
+    results = session.query(Covid.County, Covid.Month_Year, Passenger.Covid_Cases).all()
+
+    session.close()
+
+    # Create a dictionary from the row data and append to a list of all_counties
+    all_counties = []
+    for County, Month_Year, Covid_Cases in results:
+        county_dict = {}
+        county_dict["County"] = County
+        county_dict["Month_Year"] = Month_Year
+        county_dict["Covid_Cases"] = Covid_Cases
+        all_counties.append(county_dict)
+
+    return jsonify(all_counties)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
